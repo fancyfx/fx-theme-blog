@@ -1,0 +1,15 @@
+{
+    "name": "fx-theme-blog",
+    "version": "1.0.0",
+    "description": "a blog theme for vuePress",
+    "main": "index.js",
+    "author": "fancyxi",
+    "license": "MIT",
+    "scripts": {
+        "blog:dev": "vuepress dev blog",
+        "blog:build": "vuepress build blog"
+    },
+    "devDependencies": {
+        "vuepress": "^1.0.3"
+    }
+}
