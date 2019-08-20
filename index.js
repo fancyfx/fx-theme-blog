@@ -1,6 +1,6 @@
-module.export = (themeConfig, ctx) => {
+const removeMD = require('remove-markdown')
 
-    // 主题配置
+module.exports = (themeConfig, ctx) => {
     themeConfig = Object.assign(
         themeConfig,
         {
@@ -8,24 +8,20 @@ module.export = (themeConfig, ctx) => {
         }
     )
 
-    
-    // 摘要
     const config = {
-        extendPageData : function (pageCtx) {
+        // 摘要
+        extendPageData (pageCtx) {
             const strippedContent = pageCtx._strippedContent
             if (!strippedContent) {
                 return
             }
-            
-            pageCtx.summary = strippedContent
+            pageCtx.summary = removeMD(
+                            strippedContent
                             .trim()
                             .replace(/^#+\s+(.*)/, '')
                             .slice(0, themeConfig.summaryLength)
-                            + ' ...'
+                            )+ ' ...'
         }
     }
-
-
-    return config;
-    
+    return config
 }

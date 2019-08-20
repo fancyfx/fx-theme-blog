@@ -6,10 +6,13 @@
     "author": "fancyxi",
     "license": "MIT",
     "scripts": {
-        "blog:dev": "vuepress dev blog",
+        "blog:dev": "vuepress dev blog --no-clear-screen",
         "blog:build": "vuepress build blog"
     },
     "devDependencies": {
         "vuepress": "^1.0.3"
+    },
+    "dependencies": {
+        "remove-markdown": "^0.3.0"
     }
 }
