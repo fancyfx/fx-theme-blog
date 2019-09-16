@@ -5,6 +5,8 @@ blogTest2，，，ffg12321，这是的一个测试。。。
 
 ```
 console.log('hello word!')
+
+console.log('123!')
 ```
 
 **就是测试啊**
