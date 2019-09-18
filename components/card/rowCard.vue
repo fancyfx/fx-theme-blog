@@ -8,13 +8,14 @@
                 <li class="spacing">•</li>
                 <li>后端开发</li>
             </ul>
-            <h2 class="title">这是一个测试标题！！！</h2>
+            <h2 class="title">{{ postData.title }}</h2>
         </header>
         <section class="card-excerpt">
-            <p>内容写点什么好呢？！！内容写点什么好呢？！！内容写点什么好呢？！！内容写点什么好呢？！！内容写点什么好呢？！！内容写点什么好呢？！！</p>
+            <p>{{ postData.summary }}</p>
         </section>
         <footer class="card-footer">
-            <span class="update-time">2018-07-10 23:20:19</span>
+            <!-- <span class="update-time">2018-07-10 23:20:19</span> -->
+            <span class="update-time">{{ lastUpdated}}</span>
             <span class="more">more</span>
         </footer>
     </div>
@@ -22,7 +23,16 @@
 
 <script>
     export default {
-        
+        props:['postData'],
+        computed:{
+            lastUpdated(){
+                if(typeof this.postData.lastUpdated === "object"
+                && typeof this.postData.lastUpdated.moment !== "undefined")
+                    return this.postData.lastUpdated.moment
+                else
+                    return ''
+            }
+        }
     }
 </script>
 

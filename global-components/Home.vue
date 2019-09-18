@@ -5,10 +5,14 @@
         </div>
         <transition enter-active-class="animated fadeInRight delay-2s">
         <div class="centre-main" v-show="isHome">
-            <DateLists v-if="nav === 'lists'" class="centent-man"></DateLists>
-            <TagCloud v-else-if="nav === 'tags'" class="centent-man"></TagCloud>
-            <ContentList v-else class="centent-man"></ContentList>
-           
+            <div v-if="isContent">
+                <DateLists v-if="nav === 'lists'" class="centent-man"></DateLists>
+                <TagCloud v-else-if="nav === 'tags'" class="centent-man"></TagCloud>
+                <ContentList v-else class="centent-man"></ContentList>
+            </div>
+            <div class="centent-man" v-else>
+                <Content/>
+            </div>
             <div class="foot">
                 <div class="foot-dest">
                     本站由 <a href="#">@Fancyxi</a> 创建，
@@ -36,6 +40,11 @@ export default {
         return {
             isHome:false,
             nav:"blog",
+        }
+    },
+    computed:{
+        isContent(){
+            return typeof this.$page.frontmatter.home === 'boolean' && this.$page.frontmatter.home
         }
     },
     methods: {

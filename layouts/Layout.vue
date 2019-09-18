@@ -1,6 +1,7 @@
 <template>
   <div class="theme-container"> 
     <Home />
+
   </div>
 </template>
 

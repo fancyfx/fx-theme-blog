@@ -12,7 +12,7 @@
         infinite-scroll-distance="10"
         infinite-scroll-immediate-check="false">
             
-            <RowCard v-for="num in postList" :key="num.id"></RowCard>
+            <RowCard v-for="post in postList" :key="post.key" :post-data="post"></RowCard>
         </transition-group>
     </div>
     
@@ -26,16 +26,37 @@ export default {
     data() {
         return {
             busy:false,
-            // postList:[{id:1},{id:2},{id:3}],
+            defaultShowCardNum: 1,
             postList:[],
         }
     },
+    created(){
+        this.initPostCard()
+    },
+    beforeMount(){
+        // 计算默认显示的Card 的数量能否铺满整个屏幕高度
+        const maxCardNum = Math.floor(Math.floor((window.innerHeight - 50) / 290))
+        this.defaultShowCardNum = maxCardNum > this.defaultShowCardNum ? maxCardNum : this.defaultShowCardNum
+        this.initPostCard()
+            
+    },
     methods: {
+        initPostCard(){
+            if(this.$articleLsts.length > 1 )
+            {
+                this.postList = this.$articleLsts.slice(0,this.defaultShowCardNum + 1)
+            }
+        },
         loadMore(){
             this.busy = true
-            let date = new Date()
-            this.postList.push({ id: date.getTime() })
+            const index = this.defaultShowCardNum++ + 1
+            if(this.$articleLsts.length > index)
+            {
+                this.postList.push(this.$articleLsts[index])
+                
+            }
             this.busy = false
+            
         }
     },
 }

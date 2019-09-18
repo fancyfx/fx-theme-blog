@@ -2,15 +2,18 @@
 
 # Install
 
-```
-yarn && yarn blog:dev 
-or
-yarn && yarn blog:build 
-```
+// try add npm
 
 # Usage
 
-// try add
+// try add npm
+
+# Example
+
+```
+yarn ex:dev
+yarn ex:build
+```
 
 # TODO
 

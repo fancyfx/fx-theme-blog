@@ -3,5 +3,8 @@ module.exports = {
     description: 'This is a blog for VuePress',
     theme: require.resolve('../../'),
     port:8899,
-    themeConfig:{}
+    themeConfig:{
+        lang: 'zh-CN',
+        lastUpdated: true
+    }
 }
